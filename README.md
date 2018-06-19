@@ -1,7 +1,7 @@
 
 ### Introduction: Just a bit better
 
-In the last section, we took a first look at the process for improving regression lines.  We began with some data then used a simple regression line in the form $\overline{y}= \overline{m}x + \overline{b} $ to predict an output, given an input.  Finally, we measured the accuracy of our regression line by calcululating the differences between the outputs predicted by the regression line and the actual values.
+In the last section, we took a first look at the process for improving regression lines.  We began with some data then used a simple regression line in the form $\overline{y}= \overline{m}x + \overline{b} $ to predict an output, given an input.  Finally, we measured the accuracy of our regression line by calculating the differences between the outputs predicted by the regression line and the actual values.
 
 ![regression-scatter.png](./regression-scatter.png)
 
@@ -27,7 +27,7 @@ plot([cost_curve_trace], layout)
 
 ### Things are not so simple
 
-At this point, our problem of finding the minimum RSS may seem simple.  For example, why not simply try **all** of the different values for a y-intercept, and find the value where RSS is the lowest? 
+At this point, our problem of finding the minimum RSS may seem simple.  For example, why not simply try **all** of the different values for a y-intercept, and find the value where RSS is the lowest?
 
 So far, we have held one variable constant in order to experiment with the other. We need an approach that will continue to work as we change both of the variables in our regression line.  Altering the second variable makes things far more complicated.  Here is a quick look at our cost curve if we can change both our y-intercept and slope value:
 
@@ -38,18 +38,18 @@ As we can see, exploring both variables, the slope and the y-intercept, requires
 Furthermore, because we need to explore multiple variables in our regression lines, we are forced to rule out some approaches that are more computationally expensive, or simply not possible.
 
 * We **cannot** simply use the derivative (more on that later) to find the minimum.  Using that approach will be impossible in many scenarios as our regression lines become more complicated.
-* We **cannot** alter all of the variables of our regression line across all points and calculate the result.  It will take too much time, as we have more variables to alter. 
+* We **cannot** alter all of the variables of our regression line across all points and calculate the result.  It will take too much time, as we have more variables to alter.
 
 However, we are on the right track by altering our regression line and calculating the resulting RSS values.
 
 Remember in the last lesson, we evaluated our regression line by changing our y-intercept by 10 to determine whether it produced a higher or lower RSS.  
 
-| b        | residual sum of squared           | 
-| ------------- |:-------------:| 
+| b        | residual sum of squared           |
+| ------------- |:-------------:|
 | 140| 24131
-| 130      |21497| 
-| 120      |19864 | 
-| 110      |19230| 
+| 130      |21497|
+| 120      |19864 |
+| 110      |19230|
 |100 | 19597
 |90 | 20963
 |80 | 23330
@@ -63,7 +63,7 @@ We don't want to adjust the y-intercept value or another variable and hope that 
 
 We want an approach that lets us be certain that we're moving in the right direction with every change.  Also, we want to know how much of a **change** to make to minimize RSS.  
 
-> Let's call each of these changes a **step**, and the size of the change our **step size**. 
+> Let's call each of these changes a **step**, and the size of the change our **step size**.
 
 Our new task is to find step sizes that bring us to the best RSS quickly without overshooting the mark.
 
@@ -106,8 +106,8 @@ We can follow our technique with more precision by adding some numbers to our sl
 
 Let's see how this works.
 
-We use the following procedure to find the ideal $b$: 
-1.  Randomly choose a value of $b$, and 
+We use the following procedure to find the ideal $b$:
+1.  Randomly choose a value of $b$, and
 2.  Update $b$ with the formula $ b = (-.1) * slope_{b = i} + b_i$.
 
 The formula above tells us which $b$ value to look at next. We start by choosing a random $b$ value that we can plug into our formula. We take the slope of the curve at that $b$ value and multiply it by $-.1$ then add it to our original $b$ value to produce our next $b$ value.
@@ -129,4 +129,4 @@ This technique is pretty magical.  By looking at the tangent line at each point,
 
 We started this section with saying that we wanted a technique to find a $b$ value that would minimize our RSS, given a value of $m$.  We did not want to simply try all of the values of $b$ as doing so would be inefficient.  Instead, we went with the approach of gradient descent, where we try variations of regression lines iteratively changing our $b$ variable and assessing our RSS to see if we are making progress.
 
-In this lesson, we focused in on how to know which direction to alter a given variable, $m$ or $b$, as well as a technique for determining the size of the change to apply to one of our variables.  We used the line tangent to our cost curve at a given point to indicate the direction and size of the update to $b$.  The further away, the steeper the curve and thus the larger the step we would want to take.  Appropriately, our tangent line slope would have us take a larger step.  And the closer we are to the ideal $b$ value, the flatter the tangent line to the curve, and the smaller a step we would take. 
+In this lesson, we focused in on how to know which direction to alter a given variable, $m$ or $b$, as well as a technique for determining the size of the change to apply to one of our variables.  We used the line tangent to our cost curve at a given point to indicate the direction and size of the update to $b$.  The further away, the steeper the curve and thus the larger the step we would want to take.  Appropriately, our tangent line slope would have us take a larger step.  And the closer we are to the ideal $b$ value, the flatter the tangent line to the curve, and the smaller a step we would take.
