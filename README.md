@@ -1,7 +1,7 @@
 
 ### Introduction: Just a bit better
 
-In the last section, we took a first look at the process for improving regression lines.  We began with some data then used a simple regression line in the form $\overline{y}= \overline{m}x + \overline{b} $ to predict an output, given an input.  Finally, we measured the accuracy of our regression line by calculating the differences between the outputs predicted by the regression line and the actual values.
+In the last section, we took a first look at the process for improving regression lines.  We began with some data then used a simple regression line in the form $\hat{y}= mx + b $ to predict an output, given an input.  Finally, we measured the accuracy of our regression line by calculating the differences between the outputs predicted by the regression line and the actual values.
 
 ![regression-scatter.png](./regression-scatter.png)
 
@@ -19,7 +19,7 @@ b_values = list(range(70, 150, 10))
 rss = [10852, 9690, 9128, 9166, 9804, 11042, 12880, 15318]
 
 layout = build_layout(options = {'title': 'RSS with changes to y-intercept', 'xaxis': {'title': 'y-intercept value'}, 'yaxis': {'title': 'RSS'}})
-cost_curve_trace = trace_values(b_values, rss, mode="line")
+cost_curve_trace = trace_values(b_values, rss, mode="lines")
 plot([cost_curve_trace], layout)
 ```
 
@@ -94,7 +94,7 @@ init_notebook_mode(connected=True)
 layout = build_layout(options = {'title': 'RSS with changes to y-intercept', 'xaxis': {'title': 'y-intercept value'}, 'yaxis': {'title': 'RSS'}})
 b_values = list(range(70, 150, 10)[:3])
 rss = [10852, 9690, 9128, 9166, 9804, 11042, 12880, 15318][:3]
-cost_curve_trace = trace_values(b_values, rss, mode="line")
+cost_curve_trace = trace_values(b_values, rss, mode="lines")
 plot([cost_curve_trace], layout)
 ```
 
